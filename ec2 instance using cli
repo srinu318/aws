@@ -1,0 +1,19 @@
+aws ec2 run-instances --image-id ami-07ffb2f4d65357b42 --count 1 --instance-type t2.micro --key-name ecr --security-group-ids sg-018c0a0b4dca19e21 --subnet-id subnet-09a0da190584ac594
+
+aws ec2 describe-instances --instance-id i-026e4aa6cf156d594
+
+aws ec2 terminate-instances --instance-ids i-026e4aa6cf156d594
+
+aws ec2 create-tags --resources i-5203422c --tags Key=Name,Value=MyInstance
+
+aws ec2 stop-instances --instance-ids i-026e4aa6cf156d594
+
+aws ec2 start-instances --instance-ids i-026e4aa6cf156d594
+
+
+aws ec2 wait instance-running \
+    --instance-ids i-1234567890abcdef0
+    
+    
+    aws ec2 wait instance-stopped \
+    --instance-ids i-1234567890abcdef0
