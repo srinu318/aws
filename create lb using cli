@@ -1,0 +1,45 @@
+aws elbv2 create-load-balancer --name my-load-balancer  \
+--subnets subnet-0e3f5cac72EXAMPLE subnet-081ec835f3EXAMPLE --security-groups sg-07e8ffd50fEXAMPLE
+
+
+aws elbv2 create-load-balancer --name my-load-balancer  \
+--subnets subnet-0e3f5cac72EXAMPLE subnet-081ec835f3EXAMPLE --security-groups sg-07e8ffd50fEXAMPLE --ip-address-type dualstack
+
+
+aws elbv2 create-target-group --name my-targets --protocol HTTP --port 80 \
+--vpc-id vpc-0598c7d356EXAMPLE --ip-address-type [ipv4 or ipv6]
+
+
+aws elbv2 register-targets --target-group-arn targetgroup-arn  \
+--targets Id=i-0abcdef1234567890 Id=i-1234567890abcdef0
+
+
+aws elbv2 create-listener --load-balancer-arn loadbalancer-arn \
+--protocol HTTP --port 80  \
+--default-actions Type=forward,TargetGroupArn=targetgroup-arn
+
+
+aws elbv2 describe-target-health --target-group-arn targetgroup-arn
+
+
+aws elbv2 create-listener --load-balancer-arn loadbalancer-arn \
+--protocol HTTPS --port 443  \
+--certificates CertificateArn=certificate-arn \
+--default-actions Type=forward,TargetGroupArn=targetgroup-arn
+
+
+aws elbv2 create-target-group --name my-targets --protocol HTTP --port 80 \
+--vpc-id vpc-0598c7d356EXAMPLE
+
+
+aws elbv2 register-targets --target-group-arn targetgroup-arn  \
+--targets Id=i-0abcdef1234567890 Id=i-1234567890abcdef0
+
+
+aws elbv2 create-rule --listener-arn listener-arn --priority 10 \
+--conditions Field=path-pattern,Values='/img/*' \
+--actions Type=forward,TargetGroupArn=targetgroup-arn
+
+
+aws elbv2 delete-load-balancer --load-balancer-arn loadbalancer-arn
+aws elbv2 delete-target-group --target-group-arn targetgroup-arn
