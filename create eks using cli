@@ -1,6 +1,6 @@
-aws eks create-cluster --region region-code --name my-cluster --kubernetes-version 1.24 \
-   --role-arn arn:aws:iam::111122223333:role/myAmazonEKSClusterRole \
-   --resources-vpc-config subnetIds=subnet-ExampleID1,subnet-ExampleID2,securityGroupIds=sg-ExampleID1
+aws eks create-cluster --region ap-south-1 --name my-cluster --kubernetes-version 1.24 \
+   --role-arn arn:aws:iam::161051329185:role/myAmazonEKSClusterRole \
+   --resources-vpc-config subnetIds=subnet-09a0da190584ac594,subnet-018647db2ddf4bdce,securityGroupIds=sg-018c0a0b4dca19e21
    
    
    
